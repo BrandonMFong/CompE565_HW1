@@ -75,5 +75,6 @@ Cb = 2; Cr = 3;
 
 % use a for loop to access the cr and cb components and then imshow to
 % display
+% Use slide 40
 
 
