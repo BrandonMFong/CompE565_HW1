@@ -1,11 +1,13 @@
 % HW1: Basic Digital Image Processing Operations
 % Due on 03/01/2020 (11:00 pm)
 % Joseph Morga & Brandon Fong
+% TODO organize into the format required by Kumar
 
 %% 1. Read and display the image using Matlab (10 points). %%
 
 % rgbImage is a 3d matrix
 rgbImage = imread('HW1\Flooded_house.jpg','jpg'); 
+[rows, columns, numberOfColorChannels] = size(rgbImage);
 
 rgbImage(:,:,1) % red component
 disp('^ Red Component')
@@ -51,22 +53,22 @@ figure, imshow(BluePart);title('Blue');
 % 3.1. Matlab provides a command “rgb2ycbcr” to convert an %
 % RGB image into a YCbCr image. %
 
-ycbcr_1=rgb2ycbcr(rgbImage)
-disp('^ YCbCr conversion 1')
+ycbcr=rgb2ycbcr(rgbImage)
+disp('^ RGB to YCbCr')
 
 % 3.2. Matlab also provides a command “ycbcr2rgb” to %
 % convert a YCbCr image into RGB format. %
 
-ycbcr_2=ycbcr2rgb(rgbImage)
-disp('^ YCbCr conversion 2')
+RGBFromYCbCr=ycbcr2rgb(rgbImage)
+disp('^ YCbCr to RGB')
 
 %% 4. Display each band separately (Y, Cb and Cr bands). (10 points) %%
 
-figure, imshow(ycbcr_1(:,:,1)); title('ycbcr: Y component');
+figure, imshow(ycbcr(:,:,1)); title('ycbcr: Y component');
 
-figure, imshow(ycbcr_1(:,:,2)); title('ycbcr: Cb component');
+figure, imshow(ycbcr(:,:,2)); title('ycbcr: Cb component');
 
-figure, imshow(ycbcr_1(:,:,3)); title('ycbcr: Cr component');
+figure, imshow(ycbcr(:,:,3)); title('ycbcr: Cr component');
 
 %% 5. Subsample Cb and Cr bands using 4:2:0 and display both bands. (10 points) %%
 
@@ -74,7 +76,28 @@ figure, imshow(ycbcr_1(:,:,3)); title('ycbcr: Cr component');
 Cb = 2; Cr = 3;
 
 % use a for loop to access the cr and cb components and then imshow to
-% display
-% Use slide 40
+% Does the index start at 0?
 
+
+for r = 1:rows
+    for c = 1:columns
+        % for every row, go through every column
+        % if the row number is even OR the column is even, 
+        % zero out all Cb and Cr for that index
+        
+        if (mod(r, 2) == 0) || (mod(c, 2) == 0) % I hope this logic makes sense
+            ycbcr(r, c, Cb) = 0;
+            ycbcr(r, c, Cr) = 0;
+        end
+    end
+end
+
+% TODO this does not look like the sample outputs
+figure, imshow(ycbcr(:,:,Cb)); title('ycbcr: Cb Subsampled');
+figure, imshow(ycbcr(:,:,Cr)); title('ycbcr: Cr Subsampled');
+
+
+%% 6. Upsample and display the Cb and Cr bands using: (15 points) %%
+
+% 6.1. Linear interpolation %
 
