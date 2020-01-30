@@ -6,15 +6,17 @@
 %% 1. Read and display the image using Matlab (10 points). %%
 
 % rgbImage is a 3d matrix
-rgbImage = imread('HW1\Flooded_house.jpg','jpg'); 
-[rows, columns, numberOfColorChannels] = size(rgbImage);
-
-rgbImage(:,:,1) % red component
-disp('^ Red Component')
-rgbImage(:,:,2) % idk component
-disp('^ Green Component')
-rgbImage(:,:,3) % idk component
-disp('^ Blue Component')
+rgbImage = imread('Flooded_house.jpg','jpg');            %Changed path so that
+[rows, columns, numberOfColorChannels] = size(rgbImage); %my computer would not
+                                                         %give me erros
+                                                         %when running the
+                                                         %script
+rgbImage(:,:,1); % red component
+disp('^ Red Component');
+rgbImage(:,:,2); % idk component
+disp('^ Green Component');
+rgbImage(:,:,3); % idk component
+disp('^ Blue Component');
 
 % Display the image
 figure, imshow(rgbImage);title('Original');
@@ -53,13 +55,13 @@ figure, imshow(BluePart);title('Blue');
 % 3.1. Matlab provides a command “rgb2ycbcr” to convert an %
 % RGB image into a YCbCr image. %
 
-ycbcr=rgb2ycbcr(rgbImage)
+ycbcr=rgb2ycbcr(rgbImage);
 disp('^ RGB to YCbCr')
 
 % 3.2. Matlab also provides a command “ycbcr2rgb” to %
 % convert a YCbCr image into RGB format. %
 
-RGBFromYCbCr=ycbcr2rgb(rgbImage)
+RGBFromYCbCr=ycbcr2rgb(rgbImage);
 disp('^ YCbCr to RGB')
 
 %% 4. Display each band separately (Y, Cb and Cr bands). (10 points) %%
@@ -79,22 +81,35 @@ Cb = 2; Cr = 3;
 % Does the index start at 0?
 
 
-for r = 1:rows
-    for c = 1:columns
-        % for every row, go through every column
-        % if the row number is even OR the column is even, 
-        % zero out all Cb and Cr for that index
-        
-        if (mod(r, 2) == 0) || (mod(c, 2) == 0) % I hope this logic makes sense
-            ycbcr(r, c, Cb) = 0;
-            ycbcr(r, c, Cr) = 0;
-        end
-    end
-end
+% for r = 1:rows
+%     for c = 1:columns
+%         % for every row, go through every column
+%         % if the row number is even OR the column is even, 
+%         % zero out all Cb and Cr for that index
+%         
+%         if (mod(r, 2) == 0) || (mod(c, 2) == 0) % I hope this logic makes sense
+%             ycbcr(r, c, Cb) = 0;
+%             ycbcr(r, c, Cr) = 0;
+%         end
+%     end
+% end
+
+%I dont think we are supposed to zero out all even rows and columns,
+%I understood that we have to delete them.
+
+
+%Copying all odd rows and columns from ycbcr into matrix ycbcrSubsampled
+
+ycbcrSubsampled = ycbcr(1:2:end,1:2:end,2:3);  %After doing this the subsampled
+                                               %images look like the
+                                               %original ones but samller.
+                                               %I'm not sure if that is
+                                               %correct
+
 
 % TODO this does not look like the sample outputs
-figure, imshow(ycbcr(:,:,Cb)); title('ycbcr: Cb Subsampled');
-figure, imshow(ycbcr(:,:,Cr)); title('ycbcr: Cr Subsampled');
+figure, imshow(ycbcrSubsampled(:,:,Cb-1)); title('ycbcr: Cb Subsampled');
+figure, imshow(ycbcrSubsampled(:,:,Cr-1)); title('ycbcr: Cr Subsampled');
 
 
 %% 6. Upsample and display the Cb and Cr bands using: (15 points) %%
