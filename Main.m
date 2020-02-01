@@ -221,7 +221,6 @@ for r = 1:rows
 end
 
 % figure, imshow(ycbcrReconstructed62); title('[6.2] Reconstructed');
-% figure, imshow(rgbImage); title('[6.2] Original');
 
 %% 7. Convert the image into RGB format. (5 points) %%
 
@@ -230,5 +229,15 @@ end
 
 % Convert the values from 6.2
 % ycbcrReconstructed62=ycbcr2rgb(ycbcrReconstructed62); % convert back to RGB
+
+%% 8. Display the original and reconstructed images (the image restored from the YCbCr coordinate). (5 points) %%
+
+% figure, imshow(); title('[6.1] Reconstructed');% TODO put reconstructed var from 6.1
+
 % figure, imshow(ycbcrReconstructed62); title('[6.2] Reconstructed');
 % figure, imshow(rgbImage); title('[6.2] Original');
+
+%% 9. Comment on the visual quality of the reconstructed image for both the upsampling cases. (5 points) %%
+
+
+% TODO wait for 6.1 and 6.2 to finish then evaluate
