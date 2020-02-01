@@ -220,8 +220,15 @@ for r = 1:rows
     end
 end
 
-ycbcrReconstructed62=ycbcr2rgb(ycbcrReconstructed62); % convert back to RGB
 % figure, imshow(ycbcrReconstructed62); title('[6.2] Reconstructed');
 % figure, imshow(rgbImage); title('[6.2] Original');
 
 %% 7. Convert the image into RGB format. (5 points) %%
+
+% Convert the values from 6.1
+% TODO 
+
+% Convert the values from 6.2
+% ycbcrReconstructed62=ycbcr2rgb(ycbcrReconstructed62); % convert back to RGB
+% figure, imshow(ycbcrReconstructed62); title('[6.2] Reconstructed');
+% figure, imshow(rgbImage); title('[6.2] Original');
