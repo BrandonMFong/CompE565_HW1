@@ -101,15 +101,14 @@ Y = 1; Cb = 2; Cr = 3;
 %     end
 % end
 
+
 %I dont think we are supposed to zero out all even rows and columns,
 %I understood that we have to remove them.
 %I think I removed it by equating it to 128
-
-%Are we not supposed to reduce the dimensions so that an NxM matrix becomes
-%an (N/2)x(M/2) matrix
 %I think by equating the pixels to 128, we are only changing the value of
 %of that pixel to 128 instead of removing it.
-
+%We are supposed to reduce the dimensions so that an NxM matrix becomes
+%an (N/2)x(M/2) matrix
 
 
 %Copying all odd rows and columns from ycbcr into matrix ycbcrSubsampled
@@ -141,31 +140,38 @@ luma(:,:,Y) = ycbcr(:,:,Y);        %After doing this the subsampled
 ycbcrReconstructed = luma(:,:,Y);
 ycbcrReconstructed(1:2:end,1:2:end,Cb:Cr) = ycbcrSubsampled(:,:,Cb:Cr);
 
+
+
 %Calculating even pixels of odd rows
-oddPixelRows = (ycbcrSubsampled(:,1:1:end-1,Cb:Cr) + ycbcrSubsampled(:,2:1:end,Cb:Cr))/2;
-
+% oddPixelRows = (ycbcrSubsampled(:,1:1:end-1,Cb:Cr) + ycbcrSubsampled(:,2:1:end,Cb:Cr))/2;
+% 
 [lumaRows, lumaColumns] = size(luma);
+% 
+% if(mod(lumaColumns, 2) == 0)
+%     ycbcrReconstructed(1:2:end,2:2:end-1,Cb:Cr) = oddPixelRows(:,:,Cb-1:Cr-1);
+% else
+%     ycbcrReconstructed(1:2:end,2:2:end-1,Cb:Cr) = oddPixelRows(:,:,Cb-1:Cr-1);
+% end
+% 
+% if(mod(lumaRows, 2) == 0)
+%     ycbcrReconstructed(2:2:end-1,:,Cb:Cr) = (ycbcrReconstructed(1:2:end-2,:,Cb:Cr) + ycbcrReconstructed(3:2:end,:,Cb:Cr))/2;
+% else
+%     ycbcrReconstructed(2:2:end-1,:,Cb:Cr) = (ycbcrReconstructed(1:2:end-2,:,Cb:Cr) + ycbcrReconstructed(3:2:end,:,Cb:Cr))/2;
+% end
+% 
+% if(mod(lumaColumns, 2) == 0)
+%     ycbcrReconstructed(:,end,Cb:Cr) = ycbcrReconstructed(:,end-1,Cb:Cr);
+% end
+% 
+% if(mod(lumaRows, 2) == 0)
+%     ycbcrReconstructed(end,:,Cb:Cr) = ycbcrReconstructed(end-1,:,Cb:Cr);
+% end
 
-if(mod(lumaColumns, 2) == 0)
-    ycbcrReconstructed(1:2:end,2:2:end-1,Cb:Cr) = oddPixelRows(:,:,Cb-1:Cr-1);
-else
-    ycbcrReconstructed(1:2:end,2:2:end,Cb:Cr) = oddPixelRows(:,:,Cb-1:Cr-1);
+for r = 1:lumaRows
+    for c = 1:lumaColumns
+        
+    end
 end
-
-if(mod(lumaRows, 2) == 0)
-    ycbcrReconstructed(2:2:end-1,:,Cb:Cr) = (ycbcrReconstructed(1:2:end-2,:,Cb:Cr) + ycbcrReconstructed(3:2:end,:,Cb:Cr))/2;
-else
-    ycbcrReconstructed(2:2:end-1,:,Cb:Cr) = (ycbcrReconstructed(1:2:end-2,:,Cb:Cr) + ycbcrReconstructed(3:2:end,:,Cb:Cr))/2;
-end
-
-if(mod(lumaColumns, 2) == 0)
-    ycbcrReconstructed(:,end,Cb:Cr) = ycbcrReconstructed(:,end-1,Cb:Cr);
-end
-
-if(mod(lumaRows, 2) == 0)
-    ycbcrReconstructed(end,:,Cb:Cr) = ycbcrReconstructed(end-1,:,Cb:Cr);
-end
-
 
 figure, imshow(ycbcrReconstructed); title('[6.1] Reconstructed'); %Just to see what Im getting
 figure, imshow(ycbcr); title('Original'); %Original
@@ -174,7 +180,7 @@ figure, imshow(ycbcr); title('Original'); %Original
 % 6.2. Simple row or column replication. %
 % using ycbcrSubsampled
 
-ycbcrReconstructed62 = luma; % init just to ensure dimensions           %Changed this two lines :)
+ycbcrReconstructed62 = luma; % init just to ensure dimensions
 ycbcrReconstructed62(1:2:end,1:2:end,Cb:Cr) = ycbcrSubsampled(:,:,Cb:Cr);
 
 figure, imshow(ycbcrReconstructed62); title('[6.2] Before reconstruction');
