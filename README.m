@@ -6,6 +6,7 @@
 % Due Date: 2/23/2020, 11:00 pm
 % Name & ID : Joseph Morga (<TODO Joseph's REDid>), Brandon Fong (819295224)
 % email: <TODO Joseph's email>, fong.m.brandon97@gmail.com
+% Link to Report: 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 1: Read and display the image using Matlab (10 points)
@@ -316,24 +317,26 @@ component = Y;
 
 % Hmmmm, these are obviously not the same but the MSE equation says they
 % are
-figure, imshow(ycbcrOriginal); title('ycbcrOriginal');
-figure, imshow(ycbcrReconstructed); title('ycbcrReconstructed');
-
-figure, imshow(Original); title('Original');
-figure, imshow(RGBreconstructed); title('RGBreconstructed');
+% figure, imshow(ycbcrOriginal); title('ycbcrOriginal');
+% figure, imshow(ycbcrReconstructed); title('ycbcrReconstructed');
+% 
+% figure, imshow(Original); title('Original');
+% figure, imshow(RGBreconstructed); title('RGBreconstructed');
 
 if (rowsOriginal == rowsReconstructed) && (columnsOriginal == columnsReconstructed)
-    for r = 1:rowsOriginal
-        for c = 1:columnsOriginal
-            temp = ycbcrOriginal(r, c, component);
-            ycbcrReconstructed(r, c, component);
-            temp = temp - ycbcrReconstructed(r, c, component);
-            temp = temp.^2;
-            MSE = MSE + temp;
-            %temp = 0;
-        end
-    end
-    MSE = (1/(row*col))*MSE
+%     for r = 1:rowsOriginal
+%         for c = 1:columnsOriginal
+%             temp = ycbcrOriginal(r, c, component);
+%             ycbcrReconstructed(r, c, component);
+%             temp = temp - ycbcrReconstructed(r, c, component);
+%             temp = temp.^2;
+%             MSE = MSE + temp;
+%             %temp = 0;
+%         end
+%     end
+%     MSE = (1/(row*col))*MSE
+% https://www.mathworks.com/matlabcentral/answers/81048-mse-mean-square-error
+    MSE = mean(mean((ycbcrOriginal-ycbcrReconstructed).^2));
 else
     fprintf('Dimensions are wrong, please review code')
 end
