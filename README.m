@@ -219,8 +219,8 @@ if(mod(lumaRows, 2) == 0)
 end
 
 
-figure, imshow(ycbcrReconstructed); title('[6.1] Reconstructed'); %Just to see what Im getting
-figure, imshow(ycbcr); title('Original'); %Original
+% figure, imshow(ycbcrReconstructed); title('[6.1] Reconstructed'); %Just to see what Im getting
+% figure, imshow(ycbcr); title('Original'); %Original
 
 
 %% 6.2. Simple row or column replication. %%
@@ -229,7 +229,7 @@ figure, imshow(ycbcr); title('Original'); %Original
 ycbcrReconstructed62 = luma; % init just to ensure dimensions           %Changed this two lines :)
 ycbcrReconstructed62(1:2:end,1:2:end,Cb:Cr) = ycbcrSubsampled(:,:,Cb:Cr);
 
-figure, imshow(ycbcrReconstructed62); title('[6.2] Before reconstruction');
+% figure, imshow(ycbcrReconstructed62); title('[6.2] Before reconstruction');
 
 for r = 1:rows
     for c = 1:columns
@@ -247,7 +247,7 @@ for r = 1:rows
     end
 end
 
-figure, imshow(ycbcrReconstructed62); title('[6.2] Reconstructed');
+% figure, imshow(ycbcrReconstructed62); title('[6.2] Reconstructed');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 7: Convert the image into RGB format. (5 points)
@@ -275,11 +275,11 @@ ycbcrReconstructed62=ycbcr2rgb(ycbcrReconstructed62); % convert back to RGB
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-figure, imshow(RGBreconstructed); title('[8.1] Reconstructed');% TODO put reconstructed var from 6.1
-
-figure, imshow(ycbcrReconstructed62); title('[8.2] Reconstructed');
-
-figure, imshow(rgbImage); title('Original');
+% figure, imshow(RGBreconstructed); title('[8.1] Reconstructed');% TODO put reconstructed var from 6.1
+% 
+% figure, imshow(ycbcrReconstructed62); title('[8.2] Reconstructed');
+% 
+% figure, imshow(rgbImage); title('Original');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 9: Comment on the visual quality of the reconstructed image for both the upsampling cases. (5 points)
@@ -294,7 +294,7 @@ figure, imshow(rgbImage); title('Original');
 % TODO wait for 6.1 and 6.2 to finish then evaluate
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Problem 9:    Measure MSE between the original and reconstructed images (obtained 
+% Problem 10:    Measure MSE between the original and reconstructed images (obtained 
 %               using linear interpolation only). Comment on the results. (10 points)
 % Implementation 1: MSE
 % M-file name: NA
@@ -303,3 +303,44 @@ figure, imshow(rgbImage); title('Original');
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Only analyze 6.1
+% Redefining variables for clarity
+Original = rgbImage;
+ycbcrOriginal = rgb2ycbcr(Original);
+[rowsOriginal, columnsOriginal, numColOG] = size(Original);
+[rowsReconstructed, columnsReconstructed, numColRec] = size(ycbcrReconstructed);
+temp = 0;MSE = 0; %not a matrix
+red = 1; green = 2; blue = 3; Y = 1; Cb = 2; Cr = 3;
+component = Y;
+
+% Hmmmm, these are obviously not the same but the MSE equation says they
+% are
+figure, imshow(ycbcrOriginal); title('ycbcrOriginal');
+figure, imshow(ycbcrReconstructed); title('ycbcrReconstructed');
+
+figure, imshow(Original); title('Original');
+figure, imshow(RGBreconstructed); title('RGBreconstructed');
+
+if (rowsOriginal == rowsReconstructed) && (columnsOriginal == columnsReconstructed)
+    for r = 1:rowsOriginal
+        for c = 1:columnsOriginal
+            temp = ycbcrOriginal(r, c, component);
+            ycbcrReconstructed(r, c, component);
+            temp = temp - ycbcrReconstructed(r, c, component);
+            temp = temp.^2;
+            MSE = MSE + temp;
+            %temp = 0;
+        end
+    end
+    MSE = (1/(row*col))*MSE
+else
+    fprintf('Dimensions are wrong, please review code')
+end
+
+fprintf('MSE calculations are complete. MSE = %f', MSE);
+
+% This gives the error, but what is wrong with my code?
+err = immse(RGBreconstructed,Original)
+
+
