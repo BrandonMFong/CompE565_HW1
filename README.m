@@ -1,7 +1,6 @@
 % HW1: Basic Digital Image Processing Operations
 % Due on 03/01/2020 (11:00 pm)
 % Joseph Morga & Brandon Fong
-% TODO organize into the format required by Kumar
 % CompE 565 Homework 1
 % Due Date: 2/23/2020, 11:00 pm
 % Name & ID : Joseph Morga (<TODO Joseph's REDid>), Brandon Fong (819295224)
@@ -47,12 +46,6 @@ rgbImage(:,:,3); % idk component
 % Hint: Red = I[:][:][1] captures the read component of the image %
 % and stores it into array Red.%%%
 
-% I don't know if I am supposed to really the red components
-% This was my first attempt:
-% 
-% PartArray = rgbImage(:,:,1); % Red component
-% figure, imshow(PartArray);title('PartArray');
-
 % [Sources]
 % https://www.mathworks.com/matlabcentral/answers/90908-r-g-b-components-of-an-image
 
@@ -92,7 +85,7 @@ ycbcr=rgb2ycbcr(rgbImage);
 %% 3.2. Matlab also provides a command �ycbcr2rgb� to %%
 % convert a YCbCr image into RGB format. %
 
-RGBFromYCbCr=ycbcr2rgb(rgbImage); %Shouldn't be ycbrc instead of rgbImage?
+RGBFromYCbCr=ycbcr2rgb(ycbcr); %Shouldn't be ycbrc instead of rgbImage? Yes oops lol
 % disp('^ YCbCr to RGB')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,16 +125,16 @@ Y = 1; Cb = 2; Cr = 3;
 
 % for r = 1:rows
 %     for c = 1:columns
-%         % for every row, go through every column
-%         % if the row number is even OR the column is even, 
-%         % zero out all Cb and Cr for that index
+%         for every row, go through every column
+%         if the row number is even OR the column is even, 
+%         zero out all Cb and Cr for that index
 %         
 %         if (mod(r, 2) == 0) || (mod(c, 2) == 0) % I hope this logic makes sense
 %             ycbcrSubsampled(r, c, Cb) = 128;
 %             ycbcrSubsampled(r, c, Cr) = 128;
-%             % I put 128 because when I orignally put 0, ycbcrSubsampled
-%             % had 128 values and zeroes for the rest
-%             % the image looks closer to the original image
+%             I put 128 because when I orignally put 0, ycbcrSubsampled
+%             had 128 values and zeroes for the rest
+%             the image looks closer to the original image
 %         end
 %     end
 % end
@@ -230,6 +223,8 @@ end
 ycbcrReconstructed62 = luma; % init just to ensure dimensions           %Changed this two lines :)
 ycbcrReconstructed62(1:2:end,1:2:end,Cb:Cr) = ycbcrSubsampled(:,:,Cb:Cr);
 
+% ycbcrReconstructed62 = ycbcrSubsampled; % init just to ensure dimensions
+
 % figure, imshow(ycbcrReconstructed62); title('[6.2] Before reconstruction');
 
 for r = 1:rows
@@ -276,9 +271,9 @@ ycbcrReconstructed62=ycbcr2rgb(ycbcrReconstructed62); % convert back to RGB
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% figure, imshow(RGBreconstructed); title('[8.1] Reconstructed');% TODO put reconstructed var from 6.1
+% figure, imshow(RGBreconstructed); title('[8.1] Reconstructed (Interpolation)');
 % 
-% figure, imshow(ycbcrReconstructed62); title('[8.2] Reconstructed');
+% figure, imshow(ycbcrReconstructed62); title('[8.2] Reconstructed (Replication)');
 % 
 % figure, imshow(rgbImage); title('Original');
 
@@ -293,6 +288,12 @@ ycbcrReconstructed62=ycbcr2rgb(ycbcrReconstructed62); % convert back to RGB
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TODO wait for 6.1 and 6.2 to finish then evaluate
+
+% 6.2
+% The upsampled image using replication seems to be visually identical to
+% the orinial image.  There about 500 rows and 700 columns, so essentially
+% 250 rows and 350 columns are replicates of its former.  The discrepency
+% most likely cannot be seen because of the resolution and the image.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 10:    Measure MSE between the original and reconstructed images (obtained 
@@ -336,14 +337,20 @@ if (rowsOriginal == rowsReconstructed) && (columnsOriginal == columnsReconstruct
 %     end
 %     MSE = (1/(row*col))*MSE
 % https://www.mathworks.com/matlabcentral/answers/81048-mse-mean-square-error
-    MSE = mean(mean((ycbcrOriginal-ycbcrReconstructed).^2));
+    MSEY = mean(mean((ycbcrOriginal-ycbcrReconstructed).^2)); %YCBCR
+    MSERGB = mean(mean((Original-RGBreconstructed).^2)); % RGB
 else
     fprintf('Dimensions are wrong, please review code')
 end
 
-fprintf('MSE calculations are complete. MSE = %f', MSE);
+% fprintf('MSE calculations are complete. MSE = %f', (MSE(:,:,1)+MSE(:,:,2)+MSE(:,:,3)));
+fprintf('MSE calculations are complete.\n');
+fprintf('MSE (Red): %f\n',(MSERGB(:,:,red)));
+fprintf('MSE (Green): %f\n',(MSERGB(:,:,green)));
+fprintf('MSE (Blue): %f\n',(MSERGB(:,:,blue)));
+fprintf('MSE (Y): %f\n',(MSEY(:,:,Y)));
 
-% This gives the error, but what is wrong with my code?
-err = immse(RGBreconstructed,Original)
+% This gives the error with the matlab function immse()
+% err = immse(RGBreconstructed,Original)
 
 
