@@ -10,98 +10,98 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 1: Read and display the image using Matlab (10 points)
 % Implementation 1: Display
-% M-file name: NA
+% M-file name: Questions\Question1.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question1;
+run('Questions\Question1');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 2: Display each band (Red, Green and Blue) of the image file (15 points)
 % Implementation 1: Display each band
-% M-file name: NA
+% M-file name: Questions\Question2.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question2;
+run('Questions\Question2');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 3: Convert the image into YCbCr color space: (5 points)
 % Implementation 1: Conversion to YCbCr
-% M-file name: NA
+% M-file name: Questions\Question3.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question3;
+run('Questions\Question3');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 4: Display each band separately (Y, Cb and Cr bands). (10 points)
 % Implementation 1: Display YCbCr
-% M-file name: NA
+% M-file name: Questions\Question4.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question4;
+run('Questions\Question4');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 5: Subsample Cb and Cr bands using 4:2:0 and display both bands. (10 points)
 % Implementation 1: Subsampling 4:2:0
-% M-file name: NA
+% M-file name: Questions\Question5.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question5;
+run('Questions\Question5');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 6: Upsample and display the Cb and Cr bands using: (15 points)
 % Implementation 1: Upsample 
-% M-file name: NA
+% M-file name: Questions\Question6.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question6;
+run('Questions\Question6');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 7: Convert the image into RGB format. (5 points)
 % Implementation 1: Conversion to RGB 
-% M-file name: NA
+% M-file name: Questions\Question7.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question7;
+run('Questions\Question7');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 8: Display the original and reconstructed images (the image restored from the YCbCr coordinate). (5 points)
 % Implementation 1: Compare images
-% M-file name: NA
+% M-file name: Questions\Question8.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question8;
+run('Questions\Question8');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 9: Comment on the visual quality of the reconstructed image for both the upsampling cases. (5 points)
@@ -125,14 +125,14 @@ Question8;
 % Problem 10:    Measure MSE between the original and reconstructed images (obtained 
 %               using linear interpolation only). Comment on the results. (10 points)
 % Implementation 1: MSE
-% M-file name: NA
+% M-file name: Questions\Question10.m
 % Usage: NA
 % Location of output image: NA
 % Parameters: NA
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Question10;
+run('Questions\Question10');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 10:   Comment on the compression ratio achieved by subsampling 

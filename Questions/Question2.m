@@ -1,3 +1,5 @@
+% RUN SCRIPT FROM README.m
+
 % Hint: Red = I[:][:][1] captures the read component of the image %
 % and stores it into array Red.%%%
 

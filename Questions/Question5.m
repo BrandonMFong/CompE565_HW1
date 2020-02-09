@@ -1,3 +1,5 @@
+% RUN SCRIPT FROM README.m
+
 % refer to tips provided in 'MATLAB Commands_ HW1.pdf'
 Y = 1; Cb = 2; Cr = 3;
 

@@ -1,3 +1,5 @@
+% RUN SCRIPT FROM README.m
+
 %% 3.1. Matlab provides a command �rgb2ycbcr� to convert an %%
 
 % RGB image into a YCbCr image. %

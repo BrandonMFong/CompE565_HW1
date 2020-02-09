@@ -1,3 +1,5 @@
+% RUN SCRIPT FROM README.m
+
 % Convert the values from 6.1
 RGBreconstructed = ycbcr2rgb(ycbcrReconstructed);
 

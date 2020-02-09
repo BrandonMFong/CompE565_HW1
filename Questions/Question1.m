@@ -1,3 +1,5 @@
+% RUN SCRIPT FROM README.m
+
 % rgbImage is a 3d matrix
 rgbImage = imread('Flooded_house.jpg','jpg');            %Changed path so that
 [rows, columns, numberOfColorChannels] = size(rgbImage); %my computer would not

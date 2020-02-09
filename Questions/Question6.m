@@ -1,3 +1,5 @@
+% RUN SCRIPT FROM README.m
+
 %% 6.1. Linear interpolation %%
 
 % For odd row, compute the missing pixel as an average of the

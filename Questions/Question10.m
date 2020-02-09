@@ -1,3 +1,5 @@
+% RUN SCRIPT FROM README.m
+
 % Only analyze 6.1
 % Redefining variables for clarity
 Original = rgbImage;
