@@ -6,7 +6,7 @@
 % Due Date: 2/23/2020, 11:00 pm
 % Name & ID : Joseph Morga (<TODO Joseph's REDid>), Brandon Fong (819295224)
 % email: <TODO Joseph's email>, fong.m.brandon97@gmail.com
-% Link to Report: 
+% Link to Report: https://docs.google.com/document/d/1ara71pG_QNAmNXtZ8pAItMp23dw9SC7Hg4MwwOjM3XM/edit?usp=sharing
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 1: Read and display the image using Matlab (10 points)
