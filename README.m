@@ -350,7 +350,33 @@ fprintf('MSE (Green): %f\n',(MSERGB(:,:,green)));
 fprintf('MSE (Blue): %f\n',(MSERGB(:,:,blue)));
 fprintf('MSE (Y): %f\n',(MSEY(:,:,Y)));
 
+% Comments on results
+% We have displayed the MSE values for each RGB component and the y
+% component.  The greatest error that we have received was the Red
+% component.  The rest are pretty low and are good for our algorithms.
+% Especially the Y component has a value of 0.  
+
 % This gives the error with the matlab function immse()
 % err = immse(RGBreconstructed,Original)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 10:   Comment on the compression ratio achieved by subsampling 
+%               Cb and Cr components for 4:2:0 approach. Please note that 
+%               you do not send the pixels which are made zero in the row 
+%               and columns during subsampling. (5 points)
+% Implementation 1: Comment on compression ratio
+% M-file name: NA
+% Usage: NA
+% Location of output image: NA
+% Parameters: NA
+% Other parameters here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Comments on ratio
+% When we upsampled the subsampled 4:2:0 array, we were able to achieve the
+% original image.  The reconstructed image visually looks identical,
+% however the MSE shows otherwise.  Not knowing what the original Cb and Cr
+% component values were, we have the ability of sending the 4:2:0 image
+% through a network and rely on an algorithm to reconstruct it.  With the
+% decrease in file size, the comopressed image can be transmitted at a
+% higher rate.  
