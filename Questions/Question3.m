@@ -10,5 +10,5 @@ ycbcr=rgb2ycbcr(rgbImage);
 %% 3.2. Matlab also provides a command �ycbcr2rgb� to %%
 % convert a YCbCr image into RGB format. %
 
-RGBFromYCbCr=ycbcr2rgb(ycbcr); %Shouldn't be ycbrc instead of rgbImage? Yes oops lol
+RGBFromYCbCr=ycbcr2rgb(ycbcr);
 % disp('^ YCbCr to RGB')

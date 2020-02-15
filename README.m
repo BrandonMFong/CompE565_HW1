@@ -3,8 +3,8 @@
 % Joseph Morga & Brandon Fong
 % CompE 565 Homework 1
 % Due Date: 2/23/2020, 11:00 pm
-% Name & ID : Joseph Morga (<TODO Joseph's REDid>), Brandon Fong (819295224)
-% email: <TODO Joseph's email>, fong.m.brandon97@gmail.com
+% Name & ID : Joseph Morga (817281186), Brandon Fong (819295224)
+% email: jmorga@sdsu.edu, fong.m.brandon97@gmail.com
 % Link to Report: https://docs.google.com/document/d/1ara71pG_QNAmNXtZ8pAItMp23dw9SC7Hg4MwwOjM3XM/edit?usp=sharing
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,7 +17,7 @@
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question1');
+run('Questions/Question1');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 2: Display each band (Red, Green and Blue) of the image file (15 points)
@@ -29,7 +29,7 @@ run('Questions\Question1');
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question2');
+run('Questions/Question2');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 3: Convert the image into YCbCr color space: (5 points)
@@ -41,7 +41,7 @@ run('Questions\Question2');
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question3');
+run('Questions/Question3');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 4: Display each band separately (Y, Cb and Cr bands). (10 points)
@@ -53,7 +53,7 @@ run('Questions\Question3');
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question4');
+run('Questions/Question4');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 5: Subsample Cb and Cr bands using 4:2:0 and display both bands. (10 points)
@@ -65,7 +65,7 @@ run('Questions\Question4');
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question5');
+run('Questions/Question5');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 6: Upsample and display the Cb and Cr bands using: (15 points)
@@ -77,7 +77,7 @@ run('Questions\Question5');
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question6');
+run('Questions/Question6');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 7: Convert the image into RGB format. (5 points)
@@ -89,7 +89,7 @@ run('Questions\Question6');
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question7');
+run('Questions/Question7');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 8: Display the original and reconstructed images (the image restored from the YCbCr coordinate). (5 points)
@@ -101,7 +101,7 @@ run('Questions\Question7');
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question8');
+run('Questions/Question8');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 9: Comment on the visual quality of the reconstructed image for both the upsampling cases. (5 points)
@@ -132,7 +132,7 @@ run('Questions\Question8');
 % Other parameters here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-run('Questions\Question10');
+run('Questions/Question10');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 10:   Comment on the compression ratio achieved by subsampling 

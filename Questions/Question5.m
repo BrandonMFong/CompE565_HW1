@@ -41,9 +41,7 @@ Y = 1; Cb = 2; Cr = 3;
 
 ycbcrSubsampled(:,:,Cb:Cr) = ycbcr(1:2:end,1:2:end,Cb:Cr);  
                                                
-luma(:,:,Y) = ycbcr(:,:,Y);        %After doing this the subsampled
-                                   %images look like the original ones
-                                   %but smaller
+luma(:,:,Y) = ycbcr(:,:,Y);        
                                        
 
 % Display
