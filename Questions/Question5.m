@@ -45,8 +45,9 @@ luma(:,:,Y) = ycbcr(:,:,Y);
                                        
 
 % Display
-% figure, imshow(ycbcrSubsampled(:,:,Cb)); title('ycbcr: Cb Subsampled');
-% figure, imshow(ycbcrSubsampled(:,:,Cr)); title('ycbcr: Cr Subsampled');
+figure, imshow(ycbcrSubsampled(:,:,Cb)); title('ycbcr: Cb Subsampled');
+figure, imshow(ycbcrSubsampled(:,:,Cr)); title('ycbcr: Cr Subsampled');
+% figure, imshow(ycbcrSubsampled(:,:,:)); title('ycbcr: Subsampled');
 % ycbcrSubsampled(:,:,Y)
 % ycbcrSubsampled(:,:,Cb)
 % ycbcrSubsampled(:,:,Cr)
