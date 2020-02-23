@@ -36,11 +36,21 @@ oddPixelRows = (ycbcrSubsampled(:,1:1:end-1,Cb:Cr) + ycbcrSubsampled(:,2:1:end,C
 %     ycbcrReconstructed(end,:,Cb:Cr) = ycbcrReconstructed(end-1,:,Cb:Cr);
 % end
 
+% We are upsampling to 128.  Each cb and cr componet in the subsample is
+% 128.  If you look closely at the photo, you see the original colors for
+% every other pixel.  The average doesn't help
 for r = 1:rows
     for c = 1:columns
         if ((mod(c, 2) == 0) && mod(r, 2) ~= 0) % if we are in an odd row and it's an even column
             if(c ~= columns)
                 ycbcrReconstructed(r,c,Cb:Cr) = (ycbcrReconstructed(r,c-1,Cb:Cr) + ycbcrReconstructed(r,c+1,Cb:Cr))/2;
+%                 ycbcrReconstructed(r,c-1,Cb) 128
+%                 ycbcrReconstructed(r,c+1,Cb) 128
+%                 ycbcrReconstructed(r,c,Cb) 0
+                
+%                 ycbcrReconstructed(r,c,Y) = (ycbcrReconstructed(r,c-1,Y) + ycbcrReconstructed(r,c+1,Y))/2;
+%                 ycbcrReconstructed(r,c,Cb) = (ycbcrReconstructed(r,c-1,Cb) + ycbcrReconstructed(r,c+1,Cb))/2;
+%                 ycbcrReconstructed(r,c,Cr) = (ycbcrReconstructed(r,c-1,Cr) + ycbcrReconstructed(r,c+1,Cr))/2;
             end
         end
     end
@@ -51,6 +61,9 @@ for r = 1:rows
         if ((mod(r, 2) == 0)) % if we are in an even row
             if(r ~= rows)
                 ycbcrReconstructed(r,c,Cb:Cr) = (ycbcrReconstructed(r-1,c,Cb:Cr) + ycbcrReconstructed(r+1,c,Cb:Cr))/2;
+%                 ycbcrReconstructed(r,c,Y) = (ycbcrReconstructed(r-1,c,Y) + ycbcrReconstructed(r+1,c,Y))/2;
+%                 ycbcrReconstructed(r,c,Cb) = (ycbcrReconstructed(r-1,c,Cb) + ycbcrReconstructed(r+1,c,Cb))/2;
+%                 ycbcrReconstructed(r,c,Cr) = (ycbcrReconstructed(r-1,c,Cr) + ycbcrReconstructed(r+1,c,Cr))/2;
             end
         end
     end
