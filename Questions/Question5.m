@@ -7,24 +7,24 @@ Y = 1; Cb = 2; Cr = 3;
 % Does the index start at 0? It starts at index 1
 
 % Setting an ycbcr var to work with 
-% ycbcrSubsampled=rgb2ycbcr(rgbImage);
+ycbcrSubsampled=rgb2ycbcr(rgbImage);
 
 
-% for r = 1:rows
-%     for c = 1:columns
+for r = 1:rows
+    for c = 1:columns
 %         for every row, go through every column
 %         if the row number is even OR the column is even, 
 %         zero out all Cb and Cr for that index
-%         
-%         if (mod(r, 2) == 0) || (mod(c, 2) == 0) % I hope this logic makes sense
-%             ycbcrSubsampled(r, c, Cb) = 128;
-%             ycbcrSubsampled(r, c, Cr) = 128;
+        
+        if (mod(r, 2) == 0) || (mod(c, 2) == 0) % I hope this logic makes sense
+            ycbcrSubsampled(r, c, Cb) = 128;
+            ycbcrSubsampled(r, c, Cr) = 128;
 %             I put 128 because when I orignally put 0, ycbcrSubsampled
 %             had 128 values and zeroes for the rest
 %             the image looks closer to the original image
-%         end
-%     end
-% end
+        end
+    end
+end
 
 %I dont think we are supposed to zero out all even rows and columns,
 %I understood that we have to remove them.
@@ -39,9 +39,9 @@ Y = 1; Cb = 2; Cr = 3;
 
 %Copying all odd rows and columns from ycbcr into matrix ycbcrSubsampled
 
-ycbcrSubsampled(:,:,Cb:Cr) = ycbcr(1:2:end,1:2:end,Cb:Cr);  
+% ycbcrSubsampled(:,:,Cb:Cr) = ycbcr(1:2:end,1:2:end,Cb:Cr)
                                                
-luma(:,:,Y) = ycbcr(:,:,Y);        
+% luma(:,:,Y) = ycbcr(:,:,Y);        
                                        
 
 % Display

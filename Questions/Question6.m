@@ -8,13 +8,13 @@
 % For even rows, compute the missing pixel as an average of the
 % pixels in its top and bottom sides.
 
-ycbcrReconstructed = luma(:,:,Y);
-ycbcrReconstructed(1:2:end,1:2:end,Cb:Cr) = ycbcrSubsampled(:,:,Cb:Cr);
+% ycbcrReconstructed = luma(:,:,Y);
+% ycbcrReconstructed(1:2:end,1:2:end,Cb:Cr) = ycbcrSubsampled(:,:,Cb:Cr);
 
 %Calculating even pixels of odd rows
-oddPixelRows = (ycbcrSubsampled(:,1:1:end-1,Cb:Cr) + ycbcrSubsampled(:,2:1:end,Cb:Cr))/2;
+% oddPixelRows = (ycbcrSubsampled(:,1:1:end-1,Cb:Cr) + ycbcrSubsampled(:,2:1:end,Cb:Cr))/2;
 
-[lumaRows, lumaColumns] = size(luma);
+% [lumaRows, lumaColumns] = size(luma);
 
 % if(mod(lumaColumns, 2) == 0)
 %     ycbcrReconstructed(1:2:end,2:2:end-1,Cb:Cr) = oddPixelRows(:,:,Cb-1:Cr-1);
@@ -36,6 +36,7 @@ oddPixelRows = (ycbcrSubsampled(:,1:1:end-1,Cb:Cr) + ycbcrSubsampled(:,2:1:end,C
 %     ycbcrReconstructed(end,:,Cb:Cr) = ycbcrReconstructed(end-1,:,Cb:Cr);
 % end
 
+ycbcrReconstructed=ycbcrSubsampled;
 % We are upsampling to 128.  Each cb and cr componet in the subsample is
 % 128.  If you look closely at the photo, you see the original colors for
 % every other pixel.  The average doesn't help
@@ -43,14 +44,20 @@ for r = 1:rows
     for c = 1:columns
         if ((mod(c, 2) == 0) && mod(r, 2) ~= 0) % if we are in an odd row and it's an even column
             if(c ~= columns)
-                ycbcrReconstructed(r,c,Cb:Cr) = (ycbcrReconstructed(r,c-1,Cb:Cr) + ycbcrReconstructed(r,c+1,Cb:Cr))/2;
-%                 ycbcrReconstructed(r,c-1,Cb) 128
-%                 ycbcrReconstructed(r,c+1,Cb) 128
-%                 ycbcrReconstructed(r,c,Cb) 0
+%                 ycbcrReconstructed(r,c,Cb:Cr) = (ycbcrReconstructed(r,c-1,Cb:Cr) + ycbcrReconstructed(r,c+1,Cb:Cr))/2
+%                 ycbcrReconstructed(r,c-1,Y) %128
+%                 ycbcrReconstructed(r,c+1,Y) %128
+%                 ycbcrReconstructed(r,c-1,Cb) %128
+%                 ycbcrReconstructed(r,c+1,Cb) %128
+%                 ycbcrReconstructed(r,c-1,Cr) %128
+%                 ycbcrReconstructed(r,c+1,Cr) %128
                 
 %                 ycbcrReconstructed(r,c,Y) = (ycbcrReconstructed(r,c-1,Y) + ycbcrReconstructed(r,c+1,Y))/2;
-%                 ycbcrReconstructed(r,c,Cb) = (ycbcrReconstructed(r,c-1,Cb) + ycbcrReconstructed(r,c+1,Cb))/2;
-%                 ycbcrReconstructed(r,c,Cr) = (ycbcrReconstructed(r,c-1,Cr) + ycbcrReconstructed(r,c+1,Cr))/2;
+                ycbcrReconstructed(r,c,Cb) = (ycbcrReconstructed(r,c-1,Cb) + ycbcrReconstructed(r,c+1,Cb))/2;
+                ycbcrReconstructed(r,c,Cr) = (ycbcrReconstructed(r,c-1,Cr) + ycbcrReconstructed(r,c+1,Cr))/2;
+%                 ycbcrReconstructed(r,c,Y) %0
+%                 ycbcrReconstructed(r,c,Cb) %0
+%                 ycbcrReconstructed(r,c,Cr) %0
             end
         end
     end
@@ -84,10 +91,10 @@ end
 %% 6.2. Simple row or column replication. %%
 % using ycbcrSubsampled
 
-ycbcrReconstructed62 = luma; % init just to ensure dimensions           
-ycbcrReconstructed62(1:2:end,1:2:end,Cb:Cr) = ycbcrSubsampled(:,:,Cb:Cr);
+% ycbcrReconstructed62 = luma; % init just to ensure dimensions           
+% ycbcrReconstructed62(1:2:end,1:2:end,Cb:Cr) = ycbcrSubsampled(:,:,Cb:Cr);
 
-% ycbcrReconstructed62 = ycbcrSubsampled; % init just to ensure dimensions
+ycbcrReconstructed62 = ycbcrSubsampled; % init just to ensure dimensions
 % figure, imshow(ycbcrReconstructed62); title('[6.2] Before reconstruction');
 
 for r = 1:rows
